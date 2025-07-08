@@ -1,4 +1,4 @@
-# Project Name
+# gravity_sim
 
 ## Description
 This repository provides a simple tool to simulate massive objects in space. Objects have zero volume, and are represented as point masses.
