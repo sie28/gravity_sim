@@ -15,7 +15,7 @@ class Domain:
         self.objects = objects
 
         cwd = os.getcwd()
-        self.dir = os.path.join(cwd, id)
+        self.dir = os.path.join(cwd, 'outputs', id)
 
     def calc_acc(self):
 
