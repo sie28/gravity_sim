@@ -19,8 +19,8 @@ def run_sim(in_file_names, t_end, dt, fps):
     domains = []
 
     for dm in in_file_names:
-        input_file = os.path.join(inputs_dir, f'{dm}.csv')
-        objects_df = pd.read_csv(input_file, skip_blank_lines=True)
+        input_file = os.path.join(inputs_dir, f'{dm}.json')
+        objects_df = pd.read_json(input_file)
 
         objects = []
 

@@ -1,2 +1,3 @@
-inputs/
-outputs/
+inputs/**
+!inputs/gen_dom_tmplt.py
+outputs/**
