@@ -5,14 +5,17 @@ import pandas as pd
 
 def gen_dom_tmplt():
 
-    columns = ['id', 'colour', 'static', 'mass', 'loc_x', 'loc_y', 'vel_x', 'vel_y']
-    domain = pd.DataFrame(columns=columns)
+    data = {'id':['X'], 'colour':['X'], 'static':['X'], 'mass':['X'], 'loc_x':['X'], 'loc_y':['X'], 'vel_x':['X'], 'vel_y':['X']}
+    domain = pd.DataFrame(data)
 
     cwd = os.getcwd()
     inputs_dir = os.path.join(cwd, 'inputs')
-    tmplt_name = os.path.join(inputs_dir, 'domain_template.csv')
+    tmplt_name = os.path.join(inputs_dir, 'domain_template.json')
 
     if os.path.exists(tmplt_name):
         os.remove(tmplt_name)
 
-    domain.to_csv(tmplt_name, index=False)
+    domain.to_json(tmplt_name, orient='records', indent=4)
+
+if __name__ == '__main__':
+    gen_dom_tmplt()
