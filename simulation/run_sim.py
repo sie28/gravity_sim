@@ -4,6 +4,7 @@ import os
 # Third-party imports
 import pandas as pd
 import numpy as np
+import json
 
 # Local imports
 from classes.domain import Domain
@@ -11,7 +12,7 @@ from classes.object import Object
 from classes.simulation import Simulation
 
 
-def run_sim(in_file_names, t_end, dt, fps):
+def run_sim(in_file_names):
 
     cwd = os.getcwd()
     inputs_dir = os.path.join(cwd, 'inputs')
@@ -19,18 +20,27 @@ def run_sim(in_file_names, t_end, dt, fps):
     domains = []
 
     for dm in in_file_names:
+
         input_file = os.path.join(inputs_dir, f'{dm}.json')
-        objects_df = pd.read_json(input_file)
+
+        with open(input_file) as f:
+            json_data = json.load(f)
+
+        in_param = json_data['in_param']
+        dt = in_param['dt']
+        t_end = in_param['t_end']
+        fps = in_param['fps']
+
+        objects_df = pd.DataFrame(json_data['objects'])
 
         objects = []
-
         for row in objects_df.itertuples():
             id = row.id
             col = row.colour
             static = row.static
             m = row.mass
-            loc = [row.loc_x, row.loc_y]
-            vel = [row.vel_x, row.vel_y]
+            loc = row.loc
+            vel = row.vel
             obj = Object(id=id, col=col, static=static, m=m, loc=loc, vel=vel)
             objects.append(obj)
 
