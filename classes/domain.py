@@ -10,12 +10,24 @@ mpl.rcParams['animation.ffmpeg_path'] = os.path.join('C:', 'ffmpeg', 'bin', 'ffm
 
 class Domain:
     
-    def __init__(self, id, objects):
+    def __init__(self, id, in_params, objects):
         self.id = id
+        self.in_params = in_params
         self.objects = objects
 
         cwd = os.getcwd()
         self.dir = os.path.join(cwd, 'outputs', id)
+
+    def begin(self):
+
+        t_end = self.in_params['t_end']
+        dt = self.in_params['dt']
+
+        t_n = np.ceil(t_end/dt + 1)
+        self.t_list = np.linspace(0, t_end, int(t_n))
+
+        for t0, t1 in zip(self.t_list, self.t_list[1:]):
+            self.timestep(dt)
 
     def calc_acc(self):
 
@@ -59,7 +71,7 @@ class Domain:
         acc_dict = self.calc_acc()
         self.move_objs(acc_dict, dt)
         
-    def visualise(self, fps):
+    def visualise(self):
         
         def get_frame_data(frame_idx):
             xs, ys, dxdts, dydts = [], [], [], []
@@ -90,6 +102,8 @@ class Domain:
         colours = []
         for obj in self.objects:
             colours.append(obj.col)
+
+        fps = self.in_params['fps']
 
         xs_0, ys_0, dxdts_0, dydts_0 = get_frame_data(0)
 
