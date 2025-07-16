@@ -15,8 +15,16 @@ class Domain:
         self.in_params = in_params
         self.objects = objects
 
+        self.extract_walls()
+
         cwd = os.getcwd()
         self.dir = os.path.join(cwd, 'outputs', id)
+
+    def extract_walls(self):
+        self.x_wall_lower = self.in_params['x_wall_lower']
+        self.x_wall_upper = self.in_params['x_wall_upper']
+        self.y_wall_lower = self.in_params['y_wall_lower']
+        self.y_wall_upper = self.in_params['y_wall_upper']
 
     def begin(self):
 
@@ -69,6 +77,7 @@ class Domain:
     def timestep(self, dt):
         
         acc_dict = self.calc_acc()
+        # self.check_bounce()
         self.move_objs(acc_dict, dt)
         
     def visualise(self):
