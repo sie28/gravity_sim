@@ -81,11 +81,11 @@ class Domain:
 
                 if self.x_wall_lower != None:
                     if x_loc < self.x_wall_lower:
-                        obj.df['dxdt'] = np.max(x_vel, -x_vel)
+                        obj.df.loc[obj.df.index[-1], 'dxdt'] = np.max([x_vel, -x_vel])
 
                 if self.x_wall_upper != None:
                     if x_loc > self.x_wall_upper:
-                        obj.df['dxdt'] = np.min(x_vel, -x_vel)
+                        obj.df.loc[obj.df.index[-1], 'dxdt'] = np.min([x_vel, -x_vel])
 
             if self.y_wall_lower != None or self.y_wall_upper != None:
                 y_loc = obj.df['y'].iloc[-1]
@@ -93,11 +93,11 @@ class Domain:
 
                 if self.y_wall_lower != None:
                     if y_loc < self.y_wall_lower:
-                        obj.df['dydt'] = np.max(y_vel, -y_vel)
+                        obj.df.loc[obj.df.index[-1], 'dydt'] = np.max([y_vel, -y_vel])
 
                 if self.y_wall_upper != None:
                     if y_loc > self.y_wall_upper:
-                        obj.df['dydt'] = np.min(y_vel, -y_vel)
+                        obj.df.loc[obj.df.index[-1], 'dydt'] = np.min([y_vel, -y_vel])
 
     def move_objs(self, acc_dict, dt):
         
