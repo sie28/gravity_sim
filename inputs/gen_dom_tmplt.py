@@ -8,7 +8,7 @@ def gen_dom_tmplt():
 
     in_param = {'dt': 1, 't_end': 10, 'fps': 250, 'x_wall_lower': 'null', 'x_wall_upper': 'null', 'y_wall_lower': 'null', 'y_wall_upper': 'null'}
 
-    obj_data = {'id':[1, 2], 'colour':['b', 'r'], 'static':['FALSE', 'FLASE'], 'mass':[1, 1], 'loc':[[0, 0], [1, 0]], 'vel':[[0, 0], [0, 0]]}
+    obj_data = {'id':[1, 2], 'colour':['b', 'r'], 'static':['FALSE', 'FLASE'], 'mass':[1, 1], 'loc':[[0, 0], [1, 1]], 'vel':[[0, 0], [0, 0]]}
     obj_df = pd.DataFrame(obj_data)
     json_df = obj_df.to_dict(orient='records')
 

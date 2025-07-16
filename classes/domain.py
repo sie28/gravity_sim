@@ -128,6 +128,14 @@ class Domain:
         
         scat = ax.scatter(xs_0, ys_0)
         quiver = ax.quiver(xs_0, ys_0, dxdts_0, dydts_0, scale=0.005, scale_units='xy', angles='xy')
+
+        for x_line in [self.x_wall_lower, self.x_wall_upper]:
+            if x_line != 'null':
+                ax.axvline(x=x_line, color='r', linestyle='--')
+
+        for y_line in [self.y_wall_lower, self.y_wall_upper]:
+            if y_line != 'null':
+                ax.axhline(y=y_line, color='r', linestyle='--')
         
         ani = FuncAnimation(fig, update, frames=n_frames, init_func=init, blit=True)
         file = os.path.join(self.dir, f'movement_fps_{fps}.mp4')
