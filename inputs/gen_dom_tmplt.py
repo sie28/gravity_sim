@@ -6,7 +6,7 @@ import json
 
 def gen_dom_tmplt():
 
-    in_param = {'dt': 1, 't_end': 10, 'fps': 250, 'x_wall_lower': 'null', 'x_wall_upper': 'null', 'y_wall_lower': 'null', 'y_wall_upper': 'null'}
+    in_param = {'dt': 1, 't_end': 10, 'fps': 250, 'x_wall_lower': None, 'x_wall_upper': None, 'y_wall_lower': None, 'y_wall_upper': None}
 
     obj_data = {'id':[1, 2], 'colour':['b', 'r'], 'static':['FALSE', 'FLASE'], 'mass':[1, 1], 'loc':[[0, 0], [1, 1]], 'vel':[[0, 0], [0, 0]]}
     obj_df = pd.DataFrame(obj_data)

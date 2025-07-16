@@ -1,4 +1,7 @@
+# Standard library imports
 import os
+
+# Third-party imports
 from itertools import combinations
 import numpy as np
 import matplotlib.pyplot as plt
@@ -68,6 +71,34 @@ class Domain:
 
         return acc_dict
 
+    def check_bounce(self):
+
+        for obj in self.objects:
+            
+            if self.x_wall_lower != None or self.x_wall_upper != None:
+                x_loc = obj.df['x'].iloc[-1]
+                x_vel = obj.df['dxdt'].iloc[-1]
+
+                if self.x_wall_lower != None:
+                    if x_loc < self.x_wall_lower:
+                        obj.df['dxdt'] = np.max(x_vel, -x_vel)
+
+                if self.x_wall_upper != None:
+                    if x_loc > self.x_wall_upper:
+                        obj.df['dxdt'] = np.min(x_vel, -x_vel)
+
+            if self.y_wall_lower != None or self.y_wall_upper != None:
+                y_loc = obj.df['y'].iloc[-1]
+                y_vel = obj.df['dydt'].iloc[-1]
+
+                if self.y_wall_lower != None:
+                    if y_loc < self.y_wall_lower:
+                        obj.df['dydt'] = np.max(y_vel, -y_vel)
+
+                if self.y_wall_upper != None:
+                    if y_loc > self.y_wall_upper:
+                        obj.df['dydt'] = np.min(y_vel, -y_vel)
+
     def move_objs(self, acc_dict, dt):
         
         for obj in self.objects:
@@ -77,7 +108,7 @@ class Domain:
     def timestep(self, dt):
         
         acc_dict = self.calc_acc()
-        # self.check_bounce()
+        self.check_bounce()
         self.move_objs(acc_dict, dt)
         
     def visualise(self):
@@ -130,11 +161,11 @@ class Domain:
         quiver = ax.quiver(xs_0, ys_0, dxdts_0, dydts_0, scale=0.005, scale_units='xy', angles='xy')
 
         for x_line in [self.x_wall_lower, self.x_wall_upper]:
-            if x_line != 'null':
+            if x_line != None:
                 ax.axvline(x=x_line, color='r', linestyle='--')
 
         for y_line in [self.y_wall_lower, self.y_wall_upper]:
-            if y_line != 'null':
+            if y_line != None:
                 ax.axhline(y=y_line, color='r', linestyle='--')
         
         ani = FuncAnimation(fig, update, frames=n_frames, init_func=init, blit=True)

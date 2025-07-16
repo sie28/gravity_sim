@@ -28,7 +28,6 @@ def run_sim(in_file_names):
         domains.append(domain)
 
     simulation = Simulation(domains)
-    print(domains) ###
     simulation.begin()
     simulation.export()
 
