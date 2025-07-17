@@ -1,0 +1,83 @@
+{
+  "in_param": {
+    "dt": 0.05,
+    "t_end": 400,
+    "fps": 200,
+    "x_wall_lower": null,
+    "x_wall_upper": null,
+    "y_wall_lower": null,
+    "y_wall_upper": null
+  },
+  "objects": [
+    {
+      "id": 1,
+      "colour": "r",
+      "static": "FALSE",
+      "mass": 1e5,
+      "loc": [
+        -1,
+        0
+      ],
+      "vel": [
+        0.001,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "colour": "b",
+      "static": "FLASE",
+      "mass": 1e5,
+      "loc": [
+        0,
+        0.5
+      ],
+      "vel": [
+        0,
+        -0.001
+      ]
+    },
+    {
+      "id": 3,
+      "colour": "g",
+      "static": "FLASE",
+      "mass": 1e5,
+      "loc": [
+        1,
+        0.3
+      ],
+      "vel": [
+        -0.004,
+        -0.001
+      ]
+    },
+    {
+      "id": 4,
+      "colour": "m",
+      "static": "FLASE",
+      "mass": 1e5,
+      "loc": [
+        1,
+        -0.2
+      ],
+      "vel": [
+        -0.002,
+        0.001
+      ]
+    },
+    {
+      "id": 5,
+      "colour": "k",
+      "static": "FLASE",
+      "mass": 1e5,
+      "loc": [
+        0,
+        -0.4
+      ],
+      "vel": [
+        0,
+        0.001
+      ]
+    }
+  ]
+}

@@ -1,3 +1,12 @@
 inputs/**
 !inputs/gen_dom_tmplt.py
+!inputs/domain_sample_double_orbit.json
+!inputs/domain_sample_multiple_objects.json
+!inputs/domain_sample_bounce.json
 outputs/**
+!outputs/domain_sample_double_orbit/
+!outputs/domain_sample_double_orbit/**
+!outputs/domain_sample_multiple_objects/
+!outputs/domain_sample_multiple_objects/**
+!outputs/domain_sample_bounce/
+!outputs/domain_sample_bounce/**

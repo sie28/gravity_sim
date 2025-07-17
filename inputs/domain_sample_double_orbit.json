@@ -1,0 +1,55 @@
+{
+  "in_param": {
+    "dt": 1,
+    "t_end": 20000,
+    "fps": 1000,
+    "x_wall_lower": null,
+    "x_wall_upper": null,
+    "y_wall_lower": null,
+    "y_wall_upper": null
+  },
+  "objects": [
+    {
+      "id": 1,
+      "colour": "k",
+      "static": "FALSE",
+      "mass": 1e10,
+      "loc": [
+        0,
+        0
+      ],
+      "vel": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "colour": "b",
+      "static": "FLASE",
+      "mass": 1e6,
+      "loc": [
+        100,
+        100
+      ],
+      "vel": [
+        -0.0418,
+        0.0418
+      ]
+    },
+    {
+      "id": 3,
+      "colour": "g",
+      "static": "FLASE",
+      "mass": 1e6,
+      "loc": [
+        400,
+        0
+      ],
+      "vel": [
+        0,
+        0.0408
+      ]
+    }
+  ]
+}
