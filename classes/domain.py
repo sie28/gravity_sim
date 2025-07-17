@@ -5,6 +5,7 @@ import os
 from itertools import combinations
 import numpy as np
 import matplotlib.pyplot as plt
+import json
 from matplotlib.animation import FuncAnimation
 from matplotlib.animation import FFMpegWriter
 import matplotlib as mpl
@@ -200,6 +201,11 @@ class Domain:
             os.remove(os.path.join(self.dir, file))
 
         for obj in self.objects:
-            file = os.path.join(self.dir, f'obj_{obj.id}.csv')
+            file = os.path.join(self.dir, f'obj_{obj.id}.json')
             obj.df.to_csv(file, index=False)
 
+            json_df = obj.df.to_dict(orient='records')
+            # json_data = {'object_data': json_df}
+
+            with open(file, 'w') as f:
+                json.dump(json_df, f, indent=2)

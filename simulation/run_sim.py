@@ -30,5 +30,4 @@ def run_sim(in_file_names):
     simulation = Simulation(domains)
     simulation.begin()
     simulation.export()
-
     simulation.visualise()
