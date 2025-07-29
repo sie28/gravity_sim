@@ -1,0 +1,27 @@
+{
+  "in_param": {
+    "dt": 0.1,
+    "t_end": 2000,
+    "fps": 1000,
+    "x_wall_lower": -0.25,
+    "x_wall_upper": 1.25,
+    "y_wall_lower": -0.25,
+    "y_wall_upper": 1.25
+  },
+  "objects": [
+    {
+      "id": 1,
+      "colour": "k",
+      "static": "FALSE",
+      "mass": 1,
+      "loc": [
+        0,
+        0
+      ],
+      "vel": [
+        0.002,
+        0.001
+      ]
+    }
+  ]
+}

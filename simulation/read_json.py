@@ -31,4 +31,4 @@ def read_json(dm, input_file):
             obj = Object(id=id, col=col, static=static, m=m, loc=loc, vel=vel)
             objects.append(obj)
 
-        return Domain(dm, in_param, objects)
+        return Domain(dm, in_param, objects, input_file)

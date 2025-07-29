@@ -3,21 +3,24 @@ import os
 
 # Third-party imports
 from itertools import combinations
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import json
 from matplotlib.animation import FuncAnimation
 from matplotlib.animation import FFMpegWriter
 import matplotlib as mpl
+import shutil
 mpl.rcParams['animation.ffmpeg_path'] = os.path.join('C:', 'ffmpeg', 'bin', 'ffmpeg.exe')
 
 
 class Domain:
     
-    def __init__(self, id, in_params, objects):
+    def __init__(self, id, in_params, objects, in_file):
         self.id = id
         self.in_params = in_params
         self.objects = objects
+        self.in_file = in_file
 
         self.extract_walls()
 
@@ -200,12 +203,12 @@ class Domain:
         for file in os.listdir(self.dir):
             os.remove(os.path.join(self.dir, file))
 
+        out_file = os.path.join(self.dir, 'dom_data.json')
+        shutil.copy(self.in_file, out_file)
+
         for obj in self.objects:
             file = os.path.join(self.dir, f'obj_{obj.id}.json')
-            obj.df.to_csv(file, index=False)
-
             json_df = obj.df.to_dict(orient='records')
-            # json_data = {'object_data': json_df}
 
             with open(file, 'w') as f:
                 json.dump(json_df, f, indent=2)
