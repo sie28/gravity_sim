@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import json
 
 class Object:
 
@@ -95,3 +96,11 @@ class Object:
         new_row = pd.DataFrame([{ 't': t_end, 'x': x_end, 'y': y_end, 'dxdt': dxdt_end, 'dydt': dydt_end }])
 
         self.df = pd.concat([self.df, new_row], ignore_index=True)
+
+    def import_results(self, file):
+
+        with open(file) as f:
+            json_data = json.load(f)
+
+        data = pd.DataFrame(json_data)
+        self.df = data
